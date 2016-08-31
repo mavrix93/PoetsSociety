@@ -26,7 +26,7 @@ def group_poem_list(request, group_name):
 @login_required
 def draft_poem_list(request):
     GROUP_NAME = "My Drafts"
-    poems = Poem.objects.filter(visibility="DRAFT")
+    poems = Poem.objects.filter(visibility="DRAFT", from_user=request.user)
 
     poems_preview = []
     for poem in poems:
@@ -37,7 +37,7 @@ def draft_poem_list(request):
 @login_required
 def my_poem_list(request):
     GROUP_NAME = "My Poems"
-    poems = Poem.objects.filter(from_user=request.user)
+    poems = Poem.objects.filter(from_user=request.user).exclude(visibility="DRAFT")
 
     poems_preview = []
     for poem in poems:
@@ -52,7 +52,7 @@ def poem_list(request):
     this_user = request.user
     #available_groups = PoetsGroup.objects.filter(userprofile__user= this_user)
 
-    poems = Poem.objects.exclude(visibility="Draft").order_by('published_date').reverse()
+    poems = Poem.objects.exclude(visibility="Draft").exclude(visibility="DRAFT").order_by('published_date').reverse()
     #poems = Poem.objects.filter(poets_group = this_user.userprofile_set.first().poet_group.all())
     #my_poems = Poem.objects.filter(from_user = this_user ).order_by('published_date').reverse()
 
