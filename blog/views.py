@@ -127,13 +127,13 @@ def follow_group(request, group_name):
 
     this_user.userprofile_set.first().poet_group.add(group)
 
-    return redirect('groups_list')
+    return redirect('my_profile')
 
 @login_required
 def leave_group(request, group_name):
     this_user = request.user
     this_user.userprofile_set.first().poet_group.remove(*PoetsGroup.objects.filter(name=group_name))
-    return redirect('groups_list')
+    return redirect('my_profile')
 
 @login_required
 def my_profile(request):

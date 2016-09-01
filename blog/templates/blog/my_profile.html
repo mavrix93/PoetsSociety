@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h2>Followed groups</h2>
+    <h2>Followed groups:</h2>
     <ul>
     {% for group in groups %}
         <li><h3><a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3></li>

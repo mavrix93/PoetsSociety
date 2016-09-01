@@ -21,6 +21,7 @@
 	{% if user.is_authenticated %}
 	<a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-off"></span></a>
 	<a href="{% url 'poem_new' %}" class="top-menu"><span class="glyphicon glyphicon-tree-deciduous"></span></a>
+    <a href="{% url 'my_profile' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
 
 	<small><p class="top-menu">Hello {{ user.username }}</small></p>
         {% else %}
