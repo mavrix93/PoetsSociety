@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-     <h1>Groups:</h1>
-    <ul>
+    <form action="">
     {% for group in poets_groups %}
-        <div class="poem">
-            <li><h3><a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3></li>
-        </div>
+
+
+        <a href="{% url 'follow_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-heart-empty -align-left"></span></a> <a href="{% url 'leave_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-fire -align-left"></span></a>   <a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3><br>
     {% endfor %}
-    </ul>
+    </form>
+    <button type="button">Click Me!</button>
 {% endblock %}

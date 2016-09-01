@@ -14,4 +14,7 @@ urlpatterns = [
     url(r'^drafts/$', views.draft_poem_list, name='draft_poem_list'),
     url(r'^groups/$', views.groups_list, name='groups_list'),
     url(r'^my_poems/$', views.my_poem_list, name='my_poem_list'),
+    url(r'^follow/(?P<group_name>[a-zA-Z\s]*)$', views.follow_group, name='follow_group'),
+    url(r'^leave/(?P<group_name>[a-zA-Z\s]*)$', views.leave_group, name='leave_group'),
+    url(r'^my_profile/$', views.my_profile, name='my_profile'),
 ]

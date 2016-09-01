@@ -55,7 +55,7 @@ h1, h2, h3, h4 {
     color: #000000;
 }
 
-}
+
 
 .poem {
     margin-bottom: #008080;
@@ -96,6 +96,8 @@ ul.topnav li.right {float: right;}
     ul.topnav li.right,
     ul.topnav li {float: none;}
 }
+
+
 
   
 

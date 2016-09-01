@@ -21,6 +21,7 @@ class PoetsGroup(models.Model):
         max_length=4
     )
 
+
     #def isMember(self,user):
 
     def __str__(self):
@@ -40,7 +41,7 @@ class UserProfile(models.Model):
 class Poem(models.Model):
     PUBLIC_STATE = "PUB"
     DRAFT_STATE = "DRAFT"
-    STATE_CHOICES = [ (PUBLIC_STATE, "Visible for other users"), (DRAFT_STATE, "Visible just for me")]
+    STATE_CHOICES = [ (PUBLIC_STATE, "Visible for other users"), (DRAFT_STATE, "Visible just for me (in the draft view)")]
 
     from_user = models.ForeignKey('auth.User', unique=False)
     poets_group = models.ForeignKey( PoetsGroup, unique=False)
