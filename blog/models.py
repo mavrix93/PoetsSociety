@@ -14,7 +14,7 @@ class PoetsGroup(models.Model):
     PRIVATE_SITE = "PRIV"
     VISIBILITY_CHOICES = [ (PUBLIC_SITE, "Public Site"), (PRIVATE_SITE, "Private Site")]
 
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
     visibility = models.CharField(
         choices=VISIBILITY_CHOICES,
         default=PUBLIC_SITE,

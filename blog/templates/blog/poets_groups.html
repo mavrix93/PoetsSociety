@@ -2,10 +2,27 @@
 
 {% block content %}
     <form action="">
-    {% for group in poets_groups %}
-
-
-        <a href="{% url 'follow_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-plus -align-left"></span></a> <a href="{% url 'leave_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-minus -align-left"></span></a>   &emsp; <a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3><br>
-    {% endfor %}
+    <h2>Followed groups:</h2>
+        {% for group in following %}
+            <a href="{% url 'leave_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-minus -align-left"></span></a>
+            <a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3><br>
+        {% endfor %}
     </form>
+
+    <form action="">
+    <h2>Public groups to follow:</h2>
+        {% for group in not_following %}
+            <a href="{% url 'follow_group' group_name=group.name %}" class=""><span class="glyphicon glyphicon-plus -align-left"></span></a>
+            <a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3><br>
+        {% endfor %}
+    </form>
+
+
+    <form action="">
+    <h2>Private groups:</h2>
+        {% for group in private_groups %}
+            <a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3><br>
+        {% endfor %}
+    </form>
+
 {% endblock %}
