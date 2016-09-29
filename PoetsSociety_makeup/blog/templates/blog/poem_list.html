@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h3>{{ follow_txt }} </h3><h4>{{ followed_groups }}</h4>
+    {% for poem in poems %}
+        <div class="poem">
+            <div class="date">
+                {{ poem.published_date }}
+            </div>
+            <h1><a href="{% url 'poem_detail' pk=poem.pk %}">{{ poem.title }}</a></h1>
+            <i><p>{{ poem.text|linebreaksbr }}</p></i>
+        </div>
+    {% endfor %}
+{% endblock %}

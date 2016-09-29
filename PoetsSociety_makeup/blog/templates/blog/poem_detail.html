@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="poem">
+        {% if poem.publish_date %}
+            <div class="date">
+                {{ poem.published_date }}
+            </div>
+        {% endif %}
+	{% if user.is_authenticated %}
+		<a class="btn btn-default" href="{% url 'poem_edit' pk=poem.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'poem_remove' pk=poem.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+	{% endif %}
+        <h1>{{ poem.title }}</h1>
+	<h4>{{ poem.poet }}</h4>
+        <p>{{ poem.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

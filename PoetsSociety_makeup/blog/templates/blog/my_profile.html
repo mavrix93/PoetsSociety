@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>Followed groups:</h2>
+    <ul>
+    {% for group in groups %}
+        <li><h3><a href="{% url 'group_poem_list' group_name=group.name %}">{{ group.name }}</a></h3></li>
+    {% endfor %}
+    </ul>
+    <br>
+    <h2>Number of wrriten poets: {{ poets_num }}</h2>
+    <br>
+    <h2>Number of drafts: {{ drafts_num }}</h2>
+    <br>
+    <h2>My published poems: </h2>
+
+    {% for poem in poems %}
+        <div class="poem">
+            <div class="date">
+                {{ poem.published_date }}
+            </div>
+            <h1><a href="{% url 'poem_detail' pk=poem.pk %}">{{ poem.title }}</a></h1>
+            <i><p>{{ poem.text|linebreaksbr }}</p></i>
+        </div>
+    {% endfor %}
+
+{% endblock %}
